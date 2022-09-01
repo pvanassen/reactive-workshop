@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  dynamodb:
+    image: amazon/dynamodb-local:latest
+    ports:
+      - "5000:8000"
+  web:
+    image: wiremock/wiremock:latest
+    ports:
+      - "8008:8080"
+    volumes:
+      - "./docker/stubs:/home/wiremock:ro"

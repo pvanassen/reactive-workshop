@@ -1,0 +1,108 @@
+{
+  "mappings": [
+    {
+      "scenarioName": "break-things",
+      "requiredScenarioState": "Started",
+      "newScenarioState": "error-time-400",
+      "request": {
+        "method": "GET",
+        "url": "/flaky"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"text\": [\"hello world!\"]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "delayDistribution": {
+          "type": "lognormal",
+          "median": 40,
+          "sigma": 0.4
+        }
+      }
+    },
+    {
+      "scenarioName": "break-things",
+      "requiredScenarioState": "who-are-you",
+      "newScenarioState": "error-time-500",
+      "request": {
+        "method": "GET",
+        "url": "/flaky"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"text\": [\"hello world?\"]\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "delayDistribution": {
+          "type": "lognormal",
+          "median": 5000,
+          "sigma": 0.4
+        }
+      }
+    },
+    {
+      "scenarioName": "break-things",
+      "requiredScenarioState": "error-time-400",
+      "newScenarioState": "who-are-you",
+      "request": {
+        "method": "GET",
+        "url": "/flaky"
+      },
+      "response": {
+        "status": 404,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "delayDistribution": {
+          "type": "lognormal",
+          "median": 5000,
+          "sigma": 0.4
+        }
+      }
+    },
+    {
+      "scenarioName": "break-things",
+      "requiredScenarioState": "who-am-i",
+      "newScenarioState": "Started",
+      "request": {
+        "method": "GET",
+        "url": "/flaky"
+      },
+      "response": {
+        "status": 200,
+        "body": "{\n  \"text\": \"hello world!\"\n}",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "delayDistribution": {
+          "type": "lognormal",
+          "median": 5000,
+          "sigma": 0.4
+        }
+      }
+    },
+    {
+      "scenarioName": "break-things",
+      "requiredScenarioState": "error-time-500",
+      "newScenarioState": "who-am-i",
+      "request": {
+        "method": "GET",
+        "url": "/flaky"
+      },
+      "response": {
+        "status": 500,
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "delayDistribution": {
+          "type": "lognormal",
+          "median": 5000,
+          "sigma": 0.4
+        }
+      }
+    }
+
+  ]
+}
